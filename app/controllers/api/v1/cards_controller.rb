@@ -18,7 +18,7 @@ class Api::V1::CardsController < ApplicationController
     @card = Card.new(card_params)
 
     if @card.save
-      render json: @card, status: :created, location: @card
+      render json: @card, status: :created
     else
       render json: @card.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class Api::V1::CardsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def card_params
-      params.require(:card).permit(:title)
+      params.require(:card).permit(:title, :list_id)
     end
 end
