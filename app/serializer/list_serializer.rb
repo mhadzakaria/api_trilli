@@ -14,6 +14,6 @@ class ListSerializer < ActiveModel::Serializer
   end
 
   def teams(card)
-  	teams = card.teams.map { |t| {name: t.name} }
+    teams = card.teams.map { |t| {id: t.id, name: t.name} }
   end
 end

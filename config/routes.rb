@@ -2,7 +2,12 @@ Rails.application.routes.draw do
     namespace :api do
     namespace :v1 do
       resources :teams
-      resources :cards
+      resources :cards do
+        member do
+          get 'add_team/:team_id', to: "cards#add_team"
+          get 'rem_team/:team_id', to: "cards#rem_team"
+        end
+      end
       resources :posts
       resources :lists	
     end
